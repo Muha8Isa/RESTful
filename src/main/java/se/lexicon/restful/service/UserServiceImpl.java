@@ -64,6 +64,7 @@ public class UserServiceImpl implements UserService{
         Map<String, Object> map = new HashMap<>();
         map.put("username",user.getUsername());
         map.put("roles", user.getRoles());
+        map.put("expired", user.isExpired());
         return map;
     }
 
