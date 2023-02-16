@@ -37,12 +37,10 @@ public class RoleServiceImpl implements RoleService{
     public RoleDto findById(Integer roleId) {
         if(roleId == null) throw new IllegalArgumentException("role id was null");
         Optional<Role> optionalRole = roleRepository.findById(roleId);
-        if(optionalRole.isPresent()){
+        if(!optionalRole.isPresent()) throw new DataNotFoundException("role id was not valid!");
             Role entity = optionalRole.get();
           //  RoleDto dto = new RoleDto(entity.getId(), entity.getName());
            return modelMapper.map(entity, RoleDto.class); // Converts (from, to)
-        }
-        return null;
     }
 
     @Override
